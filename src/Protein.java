@@ -115,12 +115,10 @@ public class Protein {
         return protein;
     }
 
-    public static void printProtein(Protein protein){
-        try{
-
-        }catch (Exception e){
-
-        }
+    public static String toString(Protein protein){
+        StringBuilder line = new StringBuilder();
+        line.append("id:").append(protein.id).append("\tname:").append(protein.name).append("\tsize:").append(protein.size).append(Arrays.toString(protein.domains));
+        return line.toString();
     }
 
     //TODO: protein check function
