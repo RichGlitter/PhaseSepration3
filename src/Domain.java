@@ -146,11 +146,13 @@ public class Domain {
             String line;
             if (lineNo <= numOfDomain)
                 while (true) {
-                    line = reader.readLine();
-                    String[] parts = line.split("\\t", -1);
-                    if (Integer.toString(lineNo).equals(parts[0])) {
-                        return (tabNo < parts.length) ? parts[tabNo] : null;
+                    if ((line = reader.readLine()) != null) {
+                        String[] parts = line.split("\\t", -1);
+                        if (Integer.toString(lineNo).equals(parts[0])) {
+                            return (tabNo < parts.length) ? parts[tabNo] : null;
+                        }
                     }
+
                 }
             else
                 return null;
