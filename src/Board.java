@@ -22,13 +22,13 @@ public class Board {
     }
 
     /*map:
-    0       size        2size       .   .   .   size*(size-1)
-    1       size+1
-    2
-    .
-    .
-    .
-    size-1                                      size*size
+    0       size        2size       *   *   *   size*(size-1)
+    1       size+1      *           *   *   *   *
+    2       *           *           *   *   *   *
+    *       *           *           *   *   *   *
+    *       *           *           *   *   *   *
+    *       *           *           *   *   *   *
+    size-1  *           *           *   *   *   size*size
      */
 
     public int edgeIndexX(int i, int j) {
@@ -50,21 +50,21 @@ public class Board {
 
     private void endpoints(int e, int[] out) {
         int n = size;
-        if (e < Ex) {                    // x: (i,j) - (i+1,j)
+        if (e < Ex) {                                   // x: (i,j) - (i+1,j)
             int i = e / n, j = e % n;
             out[0] = id(i, j);
             out[1] = id(i + 1, j);
-        } else if (e < 2 * Ex) {         // y: (i,j) - (i,j+1)
+        } else if (e < 2 * Ex) {                        // y: (i,j) - (i,j+1)
             int t = (e - Ex);
             int i = t / n, j = t % n;
             out[0] = id(i, j);
             out[1] = id(i, j + 1);
-        } else if (e < (2 * Ex + (n - 1) * (n - 1))) { // xy: (i,j) - (i+1,j+1)
+        } else if (e < (2 * Ex + (n - 1) * (n - 1))) {  // xy: (i,j) - (i+1,j+1)
             int t = (e - 2 * Ex);
             int i = t / (n - 1), j = t % (n - 1);
             out[0] = id(i, j);
             out[1] = id(i + 1, j + 1);
-        } else {
+        } else {                                        // yx: (i,j+1) - (i+1,j)
             int t = (e - (2 * Ex + (n - 1) * (n - 1)));
             int i = t / (n - 1), j = t % (n - 1);
             out[0] = id(i, j+1);
@@ -72,7 +72,7 @@ public class Board {
         }
     }
 
-
-
+    //TODO: the main function.
+    //TODO:
 }
 
